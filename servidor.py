@@ -24,14 +24,15 @@ class ServidorVotacao:
         return self.candidatos
 
 def main():
-    daemon = Pyro4.Daemon()
+    host = "localhost"
+    daemon = Pyro4.Daemon(host)  # Cria um daemon Pyro no host especificado
     uri = daemon.register(ServidorVotacao)
 
     # Localiza o Name Server e registra o objeto
     with Pyro4.locateNS() as ns:
         ns.register("servidor_votacao", uri)
 
-    print("Servidor de votação está pronto.")
+    print("Servidor de votação está pronto. Uri: ", uri)
     daemon.requestLoop()  # O servidor processa as solicitações dos clientes
 
 if __name__ == "__main__":
