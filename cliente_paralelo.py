@@ -16,9 +16,8 @@ def view_results(servidor_votacao):
         print(f"{candidato}: {votos} votos")
 
 def main():
-    with Pyro4.locateNS() as ns:
-        uri_servidor_votacao = ns.lookup("servidor_votacao")
-        
+    uri_servidor_votacao = input('SERVIDOR: ')
+    
     servidor_votacao = Pyro4.Proxy(uri_servidor_votacao)
 
     while True:
