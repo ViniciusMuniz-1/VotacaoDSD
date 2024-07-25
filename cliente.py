@@ -1,8 +1,7 @@
 import Pyro4
 
 def main():
-    with Pyro4.locateNS() as ns:
-        uri_servidor_votacao = ns.lookup("servidor_votacao")
+    uri_servidor_votacao = input('SERVIDOR: ')
         
     servidor_votacao = Pyro4.Proxy(uri_servidor_votacao)
 
